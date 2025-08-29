@@ -19,7 +19,6 @@ body {
     position: relative;
 }
 
-/* Animated background particles */
 body::before {
     content: '';
     position: fixed;
@@ -44,7 +43,8 @@ body::before {
 
 .app-container {
     width: 100%;
-    min-width: 600px;
+    max-width: 700px;
+    min-width: 320px;
     text-align: center;
     position: relative;
     z-index: 1;
@@ -122,28 +122,6 @@ h1 {
     position: relative;
 }
 
-canvas {
-    border: 3px solid #006633;
-    background-color: #000000;
-    cursor: crosshair;
-    display: block;
-    margin: 0 auto 20px;
-    border-radius: 15px;
-    box-shadow: 
-        0 10px 30px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(0, 102, 51, 0.2),
-        inset 0 0 100px rgba(0, 102, 51, 0.05);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-canvas:hover {
-    border-color: #00ff87;
-    box-shadow: 
-        0 15px 35px rgba(0, 0, 0, 0.6),
-        0 0 40px rgba(0, 255, 135, 0.2);
-    transform: translateY(-3px);
-}
-
 .controls {
     display: flex;
     justify-content: center;
@@ -194,14 +172,14 @@ button:hover::before {
     transform: translateY(-2px) scale(1.02);
 }
 
-#predictBtn {
+#predictBtn, #predictBtnImage {
     background: linear-gradient(45deg, #00ff87, #00cc6a);
     color: #000000;
     box-shadow: 0 4px 15px rgba(0, 255, 135, 0.3);
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-#predictBtn:hover {
+#predictBtn:hover, #predictBtnImage:hover {
     background: linear-gradient(45deg, #00ff9f, #00ff87);
     box-shadow: 0 6px 20px rgba(0, 255, 135, 0.4);
     transform: translateY(-2px) scale(1.02);
@@ -314,14 +292,12 @@ button:active {
     margin: 0;
 }
 
-/* Success state for predictions */
 .result-section.success {
     border-color: #00ff87;
     background: linear-gradient(145deg, rgba(0, 255, 135, 0.1), rgba(0, 102, 51, 0.2));
     box-shadow: 0 0 30px rgba(0, 255, 135, 0.3);
 }
 
-/* Prediction result styling */
 .prediction-result {
     font-size: 2.5rem !important;
     font-weight: 700 !important;
@@ -336,7 +312,6 @@ button:active {
     100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
-/* Confidence bar */
 .confidence-bar {
     width: 100%;
     height: 8px;
@@ -381,6 +356,10 @@ footer {
     color: #7dd3c0;
     backdrop-filter: blur(10px);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
 }
 
 footer::before {
@@ -394,12 +373,6 @@ footer::before {
     animation: shimmer 3s linear infinite;
 }
 
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-}
-
-/* Loading animation */
 .loading {
     display: none;
     width: 40px;
@@ -415,7 +388,6 @@ footer::before {
     to { transform: rotate(360deg); }
 }
 
-/* Enhanced mobile responsiveness */
 @media (max-width: 768px) {
     body {
         padding: 10px;
@@ -423,6 +395,7 @@ footer::before {
     
     .app-container {
         max-width: 100%;
+        min-width: 0;
         margin: 0;
     }
     
@@ -432,11 +405,6 @@ footer::before {
     
     .main-content {
         padding: 25px 20px;
-    }
-    
-    canvas {
-        width: 250px !important;
-        height: 250px !important;
     }
     
     .controls {
@@ -456,11 +424,6 @@ footer::before {
 }
 
 @media (max-width: 480px) {
-    canvas {
-        width: 200px !important;
-        height: 200px !important;
-    }
-    
     h1 {
         font-size: 1.8rem;
     }
@@ -476,11 +439,6 @@ footer::before {
     }
 }
 
-/* Hover effects and interactions */
-canvas {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
 button:hover {
     transform: translateY(-2px) scale(1.02);
 }
@@ -493,7 +451,6 @@ button:active {
     transform: translateY(-1px);
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -511,7 +468,6 @@ button:active {
     background: linear-gradient(45deg, #00ff87, #00cc6a);
 }
 
-/* Additional enhancements */
 .upload-section {
     position: relative;
 }
@@ -525,7 +481,6 @@ button:active {
     margin-bottom: 15px;
 }
 
-/* Subtle animations */
 .app-container > * {
     animation: fadeInUp 0.6s ease-out;
 }
